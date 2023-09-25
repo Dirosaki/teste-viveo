@@ -1,0 +1,7 @@
+node_modules
+public
+.vscode
+dist
+vite.config.ts
+tailwind.config.js
+postcss.config.js
