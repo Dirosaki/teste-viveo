@@ -82,6 +82,7 @@
     ],
     "import/prefer-default-export": "off",
     "import/order": "off",
+    "import/no-extraneous-dependencies": "off",
     "camelcase": "error",
     "no-param-reassign": [
       "error",
