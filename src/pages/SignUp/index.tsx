@@ -5,15 +5,16 @@ import {
   FormControl,
   InputAdornment,
   IconButton,
+  Snackbar,
 } from '@mui/material'
 
 import { AuthContainer } from 'layouts'
 
 import { Button, HelperText, Link, TextField } from 'components'
 
-import { useSignIn } from './hooks/useSignIn'
+import { useSignUp } from './hooks/useSignUp'
 
-const SignIn = () => {
+const SignUp = () => {
   const {
     register,
     handleSubmit,
@@ -21,12 +22,14 @@ const SignIn = () => {
     errors,
     showPassword,
     handleToggleShowPassword,
-  } = useSignIn()
+    toast,
+    closeToast,
+  } = useSignUp()
 
   return (
     <AuthContainer
-      description="Insira seu e-mail e senha para entrar"
-      title="Login"
+      description="Cadastre seu e-mail e senha para acessar o sistema"
+      title="Cadastre-se"
     >
       <form onSubmit={handleSubmit}>
         <Stack spacing={2}>
@@ -71,24 +74,61 @@ const SignIn = () => {
             />
             <HelperText>{errors.password?.message}</HelperText>
           </FormControl>
+          <FormControl>
+            <TextField
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    edge="end"
+                    onClick={handleToggleShowPassword}
+                    size="small"
+                  >
+                    {showPassword ? (
+                      <VisibilityOff
+                        className="text-zinc-400"
+                        color="inherit"
+                        fontSize="small"
+                      />
+                    ) : (
+                      <Visibility
+                        className="text-zinc-400"
+                        color="inherit"
+                        fontSize="small"
+                      />
+                    )}
+                  </IconButton>
+                </InputAdornment>
+              }
+              label="Confirmar senha"
+              placeholder="Confirme sua senha"
+              type={showPassword ? 'text' : 'password'}
+              {...register('confirmPassword')}
+            />
+            <HelperText>{errors.confirmPassword?.message}</HelperText>
+          </FormControl>
 
-          <Link
-            className="inline-flex mt-4 no-underline"
-            to="/recover-password"
-          >
-            Esqueci minha senha
-          </Link>
           <Button isLoading={isSubmitting} type="submit">
-            {isSubmitting ? <CircularProgress size={24} /> : 'Entrar'}
+            {isSubmitting ? <CircularProgress size={24} /> : 'Cadastrar'}
           </Button>
         </Stack>
       </form>
 
       <p className="block mt-8 text-center text-zinc-700">
-        Não possuí uma conta? <Link to="/signup">Criar conta</Link>
+        Já possuí uma conta? <Link to="/signin">Entrar</Link>
       </p>
+
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        autoHideDuration={2500}
+        onClose={closeToast}
+        open={toast}
+      >
+        <div className="px-4 py-2 bg-white rounded shadow text-zinc-700">
+          Cadastro realizado com sucesso!
+        </div>
+      </Snackbar>
     </AuthContainer>
   )
 }
 
-export default SignIn
+export default SignUp

@@ -26,15 +26,7 @@ const RecoverPassword = () => {
             <HelperText>{errors.email?.message}</HelperText>
           </FormControl>
           <Button isLoading={isSubmitting} type="submit">
-            {isSubmitting ? (
-              <CircularProgress
-                className="text-white"
-                color="inherit"
-                size={24}
-              />
-            ) : (
-              'Enviar link'
-            )}
+            {isSubmitting ? <CircularProgress size={24} /> : 'Enviar link'}
           </Button>
         </Stack>
       </form>
