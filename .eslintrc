@@ -26,10 +26,7 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-  "plugins": [
-    "react",
-    "@typescript-eslint"
-  ],
+  "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "react/react-in-jsx-scope": "off",
     "react/no-unused-prop-types": "error",
@@ -37,6 +34,7 @@
     "react/jsx-props-no-spreading": "off",
     "react/jsx-no-constructed-context-values": "off",
     "react/jsx-sort-props": "warn",
+    "react/require-default-props": "off",
     "react/jsx-no-target-blank": [
       "error",
       {
@@ -93,5 +91,13 @@
     "no-console": "error",
     "no-unreachable": "error",
     "require-await": "error"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["src/vite-env.d.ts"],
+      "rules": {
+        "@typescript-eslint/consistent-type-definitions": "off"
+      }
+    }
+  ]
 }
