@@ -72,7 +72,10 @@ const SignIn = () => {
             <HelperText>{errors.password?.message}</HelperText>
           </FormControl>
 
-          <Link className="inline-flex mt-4 no-underline" to="/reset-password">
+          <Link
+            className="inline-flex mt-4 no-underline"
+            to="/recover-password"
+          >
             Esqueci minha senha
           </Link>
           <Button isLoading={isSubmitting} type="submit">
