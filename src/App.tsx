@@ -5,6 +5,8 @@ import { ThemeProvider } from '@mui/material'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { routes } from 'Router'
 
+import { Loading } from 'components'
+
 import { theme } from 'styles/theme'
 
 import 'styles/global.css'
@@ -21,7 +23,7 @@ export const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
-        <Suspense fallback={<h1>Carregando</h1>}>
+        <Suspense fallback={<Loading />}>
           <RouterProvider router={routes} />
         </Suspense>
       </ThemeProvider>

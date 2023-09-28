@@ -5,7 +5,7 @@ const Home = () => {
   const { users } = useHome()
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-full gap-6 p-4 h-max bg-zinc-100">
+    <main className="flex flex-col items-center min-h-full gap-6 p-4 h-max bg-zinc-100">
       <h1 className="text-2xl font-medium text-zinc-700 lg:text-3xl">
         Contatos
       </h1>
