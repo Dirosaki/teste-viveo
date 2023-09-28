@@ -1,5 +1,3 @@
-import { memo } from 'react'
-
 import { Divider } from '@mui/material'
 
 import { Results } from 'services/queries/types'
@@ -8,7 +6,7 @@ type CardProps = {
   user: Results
 }
 
-export const Card = memo(({ user }: CardProps) => {
+export const Card = ({ user }: CardProps) => {
   return (
     <div className="relative grid grid-cols-[96px_1fr] gap-3 p-4 bg-white rounded shadow lg:grid-cols-[128px_1fr] lg:gap-4">
       <div className="relative flex overflow-hidden rounded shadow">
@@ -36,4 +34,4 @@ export const Card = memo(({ user }: CardProps) => {
       </div>
     </div>
   )
-})
+}
